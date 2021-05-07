@@ -1,4 +1,4 @@
-# ToDo PWA
+# Scrum Board
 
 Este es un peque;o app de un scrum board. Realizado con react.
 
