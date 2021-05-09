@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Header from "./Components/Header";
-import Column from "./Components/Column";
-import AddColumn from "./Components/AddColumn";
-import { COLUMNS, TASKS } from "./utils/constants/boardData";
+import Header from "./../Components/Header";
+import Column from "./../Components/Column";
+import AddColumn from "./../Components/AddColumn";
+import { COLUMNS, TASKS } from "./../utils/constants/boardData";
 
 const Board = () => {
   const [columns, setColumns] = useState(COLUMNS);
