@@ -1,30 +1,39 @@
-import React from 'react';
-import {Form} from 'react-bootstrap';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-const AddColumn = ({columns,setColumns}) => {
+const AddColumn = ({ onAddNewColumn }) => {
+  const [columnName, setColumnName] = useState("");
 
-    const newColumn = (e)=>{
+  const handleOnChange = (e) => {
+    setColumnName(e.target.value);
+  };
 
-        e.preventDefault();
-        // Get descripcion
-        const name = e.target.querySelector('input').value;
-        // Get last id
-        const lastId = Math.max(...[...columns].map(t => t.id)) +1;
-        const column = {id:lastId,name};
+  return (
+    <div className="col column">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onAddNewColumn(columnName);
+        }}
+      >
+        <input
+          type="text"
+          placeholder="New column"
+          autoComplete="off"
+          value={columnName}
+          onChange={handleOnChange}
+        />
+      </form>
+    </div>
+  );
+};
 
-        setColumns([...columns,column]);
-        e.target.reset();
-    }
+AddColumn.propTypes = {
+  onAddNewColumn: PropTypes.func,
+};
 
-    return (
-        <div className="col column">
-            <Form onSubmit={newColumn}>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Control type="text" placeholder="New column" autoComplete='off' />
-                </Form.Group>
-            </Form>
-        </div>
-    )
-}
+AddColumn.defaultProps = {
+  onAddNewColumn: () => {},
+};
 
 export default AddColumn;
