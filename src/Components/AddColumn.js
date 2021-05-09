@@ -14,6 +14,7 @@ const AddColumn = ({ onAddNewColumn }) => {
         onSubmit={(e) => {
           e.preventDefault();
           onAddNewColumn(columnName);
+          setColumnName('');
         }}
       >
         <input
